@@ -324,6 +324,66 @@
             border-top: 1px solid #f1f5f9;
         }
 
+        /* Testimonial */
+        .testimonial {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+
+        .testimonial-pfp {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #e2e8f0;
+        }
+
+        .testimonial-meta {
+            flex: 1;
+        }
+
+        .testimonial-name {
+            font-size: 14px;
+            font-weight: 700;
+            color: #0f172a;
+        }
+
+        .testimonial-verified {
+            font-size: 12px;
+            color: #10b981;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .testimonial-verified svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        .testimonial-text {
+            font-size: 14px;
+            color: #475569;
+            line-height: 1.5;
+            font-style: italic;
+        }
+
+        .testimonial-text strong {
+            color: #059669;
+            font-style: normal;
+        }
+
         /* Responsive */
         @media (max-width: 480px) {
             .container {
@@ -343,6 +403,10 @@
                 font-size: 40px;
             }
 
+            .testimonial-pfp {
+                width: 38px;
+                height: 38px;
+            }
         }
     </style>
 </head>
@@ -375,6 +439,23 @@
                 <div class="avatar">+2k</div>
             </div>
             <div class="social-text"><strong>2,000+</strong> Revolut rewards claimed today</div>
+        </div>
+
+        <!-- Testimonial -->
+        <div class="testimonial">
+            <div class="testimonial-header">
+                <img src="review.jpg" alt="User" class="testimonial-pfp">
+                <div class="testimonial-meta">
+                    <div class="testimonial-name">Sarah M.</div>
+                    <div class="testimonial-verified">
+                        <svg fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                        </svg>
+                        Verified Claim
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-text">"<strong>I did it and it worked!</strong> Got my £750 Revolut reward in just 2 days. Super easy process!"</div>
         </div>
 
         <!-- Reward Box -->
