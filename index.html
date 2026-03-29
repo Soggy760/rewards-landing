@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Claim Your Reward</title>
+    <title>Claim Your Revolut Reward</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * {
@@ -28,7 +28,7 @@
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 10px 40px -10px rgba(0, 0, 0, 0.1);
             max-width: 520px;
             width: 100%;
-            padding: 48px 40px;
+            padding: 40px;
             animation: slideUp 0.5s ease-out;
             border: 1px solid #e2e8f0;
         }
@@ -44,14 +44,28 @@
             }
         }
 
-        /* Trust Badge at Top */
+        /* Logo */
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Trust Bar */
         .trust-bar {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 20px;
-            margin-bottom: 32px;
-            padding-bottom: 24px;
+            margin-bottom: 28px;
+            padding-bottom: 20px;
             border-bottom: 1px solid #f1f5f9;
         }
 
@@ -73,21 +87,20 @@
         /* Header */
         .header {
             text-align: center;
-            margin-bottom: 32px;
+            margin-bottom: 28px;
         }
 
         .header-badge {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            background: #fef3c7;
-            color: #92400e;
+            background: #0657cf;
+            color: white;
             padding: 6px 14px;
             border-radius: 20px;
             font-size: 12px;
             font-weight: 600;
             margin-bottom: 16px;
-            border: 1px solid #fde68a;
         }
 
         .header-badge svg {
@@ -117,7 +130,7 @@
             align-items: center;
             justify-content: center;
             gap: 12px;
-            margin-bottom: 28px;
+            margin-bottom: 24px;
             padding: 12px 16px;
             background: #f8fafc;
             border-radius: 10px;
@@ -146,10 +159,10 @@
             margin-left: 0;
         }
 
-        .avatar:nth-child(1) { background: #3b82f6; }
-        .avatar:nth-child(2) { background: #8b5cf6; }
-        .avatar:nth-child(3) { background: #10b981; }
-        .avatar:nth-child(4) { background: #f59e0b; }
+        .avatar:nth-child(1) { background: #0657cf; }
+        .avatar:nth-child(2) { background: #00d16c; }
+        .avatar:nth-child(3) { background: #191c1f; }
+        .avatar:nth-child(4) { background: #8b5cf6; }
 
         .social-text {
             font-size: 13px;
@@ -164,11 +177,11 @@
         /* Reward Box */
         .reward-box {
             background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
-            border: 2px solid #10b981;
+            border: 2px solid #00d16c;
             border-radius: 12px;
-            padding: 28px 24px;
+            padding: 24px;
             text-align: center;
-            margin-bottom: 28px;
+            margin-bottom: 24px;
             position: relative;
         }
 
@@ -179,7 +192,7 @@
             left: -1px;
             right: -1px;
             height: 4px;
-            background: linear-gradient(90deg, #10b981, #34d399);
+            background: linear-gradient(90deg, #00d16c, #10b981);
             border-radius: 12px 12px 0 0;
         }
 
@@ -193,7 +206,7 @@
         }
 
         .reward-amount {
-            font-size: 52px;
+            font-size: 48px;
             font-weight: 800;
             color: #047857;
             line-height: 1;
@@ -218,13 +231,13 @@
         }
 
         .steps {
-            margin-bottom: 28px;
+            margin-bottom: 24px;
         }
 
         .step-item {
             display: flex;
             align-items: flex-start;
-            padding: 16px;
+            padding: 14px;
             margin-bottom: 10px;
             background: #f8fafc;
             border-radius: 10px;
@@ -242,8 +255,8 @@
             height: 28px;
             border-radius: 50%;
             background: white;
-            border: 2px solid #3b82f6;
-            color: #3b82f6;
+            border: 2px solid #0657cf;
+            color: #0657cf;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -278,9 +291,9 @@
             cursor: pointer;
             transition: all 0.2s ease;
             font-family: inherit;
-            background: linear-gradient(180deg, #3b82f6 0%, #2563eb 100%);
+            background: linear-gradient(180deg, #00d16c 0%, #10b981 100%);
             color: white;
-            box-shadow: 0 4px 14px rgba(59, 130, 246, 0.35);
+            box-shadow: 0 4px 14px rgba(0, 209, 108, 0.35);
             margin-bottom: 20px;
             position: relative;
             overflow: hidden;
@@ -288,8 +301,8 @@
 
         .cta-button:hover {
             transform: translateY(-1px);
-            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.45);
-            background: linear-gradient(180deg, #2563eb 0%, #1d4ed8 100%);
+            box-shadow: 0 6px 20px rgba(0, 209, 108, 0.45);
+            background: linear-gradient(180deg, #10b981 0%, #059669 100%);
         }
 
         .cta-button:active {
@@ -336,7 +349,12 @@
         /* Responsive */
         @media (max-width: 480px) {
             .container {
-                padding: 32px 24px;
+                padding: 28px 20px;
+            }
+
+            .logo {
+                width: 64px;
+                height: 64px;
             }
 
             .header h1 {
@@ -344,7 +362,7 @@
             }
 
             .reward-amount {
-                font-size: 44px;
+                font-size: 40px;
             }
 
             .trust-bar {
@@ -356,6 +374,21 @@
 </head>
 <body>
     <div class="container">
+        <!-- Revolut Logo -->
+        <div class="logo-container">
+            <svg class="logo" width="192" height="192" viewBox="0 0 192 192" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <rect x="1.14998" y="1.14998" width="189.7" height="189.7" rx="94.85" fill="white"/>
+                <rect x="1.14998" y="1.14998" width="189.7" height="189.7" rx="94.85" fill="url(#pattern0_6003_224)"/>
+                <rect x="1.14998" y="1.14998" width="189.7" height="189.7" rx="94.85" stroke="white" stroke-width="2.29995"/>
+                <defs>
+                    <pattern id="pattern0_6003_224" patternContentUnits="objectBoundingBox" width="1" height="1">
+                        <use xlink:href="#image0_6003_224" transform="translate(0.171184 0.17043) scale(0.00171664)"/>
+                    </pattern>
+                    <image id="image0_6003_224" width="400" height="400" preserveAspectRatio="none" xlink:href="data:image/png;base64,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"/>
+                </defs>
+            </svg>
+        </div>
+
         <!-- Trust Bar -->
         <div class="trust-bar">
             <div class="trust-item">
@@ -378,10 +411,10 @@
                 <svg fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                 </svg>
-                Verified Reward Partner
+                Official Revolut Partner
             </div>
-            <h1>Claim Your <span id="headerAmount">750</span> Reward</h1>
-            <p>Join thousands who have already claimed their rewards. Limited availability.</p>
+            <h1>Claim Your Revolut Reward</h1>
+            <p>Join thousands who have already claimed their Revolut rewards. Limited availability.</p>
         </div>
 
         <!-- Social Proof -->
@@ -392,12 +425,12 @@
                 <div class="avatar">SR</div>
                 <div class="avatar">+2k</div>
             </div>
-            <div class="social-text"><strong>2,000+</strong> rewards claimed today</div>
+            <div class="social-text"><strong>2,000+</strong> Revolut rewards claimed today</div>
         </div>
 
         <!-- Reward Box -->
         <div class="reward-box">
-            <div class="reward-label">Your Gift Card Value</div>
+            <div class="reward-label">Your Revolut Gift Card Value</div>
             <div class="reward-amount" id="rewardAmount">750</div>
             <div class="reward-note">Available for immediate claim</div>
         </div>
@@ -432,14 +465,14 @@
             <div class="step-item">
                 <div class="step-number">4</div>
                 <div class="step-content">
-                    <h3>Receive Your Reward</h3>
-                    <p>Get your <span class="rewardCurrency">750</span> gift card delivered to your email</p>
+                    <h3>Receive Your Revolut Reward</h3>
+                    <p>Get your <span class="rewardCurrency">750</span> Revolut gift card delivered to your email</p>
                 </div>
             </div>
         </div>
 
         <!-- CTA -->
-        <button class="cta-button" onclick="accessRewards()">Claim Your Reward Now</button>
+        <button class="cta-button" onclick="accessRewards()">Claim Your Revolut Reward Now</button>
 
         <!-- Security Footer -->
         <div class="security-footer">
@@ -458,7 +491,7 @@
                 </div>
             </div>
             <div class="guarantee">
-                Trusted by over 500,000 members worldwide
+                Trusted by over 500,000 Revolut members worldwide
             </div>
         </div>
     </div>
@@ -535,16 +568,15 @@
             const formattedAmount = formatAmount(amount, currency);
             
             document.getElementById('rewardAmount').textContent = formattedAmount;
-            document.getElementById('headerAmount').textContent = formattedAmount;
             document.querySelectorAll('.rewardCurrency').forEach(el => {
                 el.textContent = formattedAmount;
             });
-            document.title = 'Claim Your ' + formattedAmount + ' Reward';
+            document.title = 'Claim Your Revolut Reward';
         })();
 
         function accessRewards() {
             // window.location.href = 'YOUR_OFFER_URL_HERE';
-            alert('Redirecting to rewards...\n\nReplace with your offer URL!');
+            alert('Redirecting to Revolut rewards...\n\nReplace with your offer URL!');
         }
     </script>
 </body>
