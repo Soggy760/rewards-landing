@@ -119,7 +119,7 @@
         }
 
         .reward-box .amount {
-            font-size: 48px;
+            font-size: 56px;
             font-weight: 800;
             background: linear-gradient(135deg, #667eea, #764ba2);
             -webkit-background-clip: text;
@@ -217,7 +217,7 @@
             }
 
             .reward-box .amount {
-                font-size: 36px;
+                font-size: 42px;
             }
 
             .cta-button {
@@ -230,7 +230,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>Claim Your $50 Reward</h1>
+            <h1>Claim Your <span id="headerAmount">750</span> Reward</h1>
             <p>Follow these simple steps to unlock your gift card</p>
         </div>
 
@@ -263,13 +263,13 @@
                 <div class="step-number">4</div>
                 <div class="step-content">
                     <h3>Claim Your Reward</h3>
-                    <p>Receive your $50 gift card instantly via email</p>
+                    <p>Receive your <span class="rewardCurrency">750</span> gift card instantly via email</p>
                 </div>
             </div>
         </div>
 
         <div class="reward-box">
-            <div class="amount">$50</div>
+            <div class="amount" id="rewardAmount">750</div>
             <div class="label">Gift Card Reward</div>
         </div>
 
@@ -305,11 +305,115 @@
     </div>
 
     <script>
+        // Currency configuration based on timezone/language
+        const currencyConfig = {
+            // Europe - EUR
+            'Europe': { symbol: '€', code: 'EUR', position: 'before' },
+            // UK - GBP
+            'GB': { symbol: '£', code: 'GBP', position: 'before' },
+            'IE': { symbol: '£', code: 'GBP', position: 'before' },
+            // Japan - YEN
+            'JP': { symbol: '¥', code: 'JPY', position: 'before' },
+            // Australia - AUD
+            'AU': { symbol: 'A$', code: 'AUD', position: 'before' },
+            'NZ': { symbol: 'NZ$', code: 'NZD', position: 'before' },
+            // Canada - CAD
+            'CA': { symbol: 'C$', code: 'CAD', position: 'before' },
+            // Switzerland - CHF
+            'CH': { symbol: 'CHF', code: 'CHF', position: 'after' },
+            // Scandinavia
+            'SE': { symbol: 'kr', code: 'SEK', position: 'after' },
+            'NO': { symbol: 'kr', code: 'NOK', position: 'after' },
+            'DK': { symbol: 'kr', code: 'DKK', position: 'after' },
+            // Default - USD
+            'default': { symbol: '$', code: 'USD', position: 'before' }
+        };
+
+        function detectCurrency() {
+            try {
+                // Try to get timezone
+                const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+                const lang = navigator.language || navigator.userLanguage;
+                
+                // Map timezone to region
+                if (timezone.startsWith('Europe/')) {
+                    // Check for UK/Ireland specifically
+                    if (timezone.includes('London') || timezone.includes('Dublin')) {
+                        return currencyConfig['GB'];
+                    }
+                    return currencyConfig['Europe'];
+                }
+                
+                if (timezone.startsWith('Asia/Tokyo')) {
+                    return currencyConfig['JP'];
+                }
+                
+                if (timezone.startsWith('Australia/')) {
+                    return currencyConfig['AU'];
+                }
+                
+                if (timezone.startsWith('Pacific/Auckland')) {
+                    return currencyConfig['NZ'];
+                }
+                
+                if (timezone.startsWith('America/')) {
+                    if (timezone.includes('Toronto') || timezone.includes('Vancouver') || 
+                        timezone.includes('Montreal') || timezone.includes('Edmonton')) {
+                        return currencyConfig['CA'];
+                    }
+                }
+                
+                // Fallback to language detection
+                const langCode = lang.split('-')[1] || lang.split('-')[0].toUpperCase();
+                
+                if (['GB', 'UK'].includes(langCode)) return currencyConfig['GB'];
+                if (['JP', 'JA'].includes(langCode)) return currencyConfig['JP'];
+                if (['AU'].includes(langCode)) return currencyConfig['AU'];
+                if (['CA'].includes(langCode)) return currencyConfig['CA'];
+                if (['NZ'].includes(langCode)) return currencyConfig['NZ'];
+                if (['SE'].includes(langCode)) return currencyConfig['SE'];
+                if (['NO'].includes(langCode)) return currencyConfig['NO'];
+                if (['DK'].includes(langCode)) return currencyConfig['DK'];
+                if (['CH', 'DE', 'FR', 'ES', 'IT', 'NL', 'BE', 'AT', 'PT', 'GR', 'PL'].includes(langCode)) {
+                    return currencyConfig['Europe'];
+                }
+                
+                return currencyConfig['default'];
+            } catch (e) {
+                return currencyConfig['default'];
+            }
+        }
+
+        function formatAmount(amount, currency) {
+            if (currency.position === 'after') {
+                return amount + ' ' + currency.symbol;
+            }
+            return currency.symbol + amount;
+        }
+
+        // Apply currency on page load
+        (function() {
+            const currency = detectCurrency();
+            const amount = '750';
+            const formattedAmount = formatAmount(amount, currency);
+            
+            // Update all amount displays
+            document.getElementById('rewardAmount').textContent = formattedAmount;
+            document.getElementById('headerAmount').textContent = formattedAmount;
+            
+            // Update step 4 text
+            document.querySelectorAll('.rewardCurrency').forEach(el => {
+                el.textContent = formattedAmount;
+            });
+            
+            // Update page title
+            document.title = 'Claim Your ' + formattedAmount + ' Reward';
+        })();
+
         function accessRewards() {
             // Replace this URL with your actual offer/affiliate link
             // window.location.href = 'YOUR_OFFER_URL_HERE';
             
-            // For now, just show an alert
             alert('Redirecting to rewards...\n\nReplace the URL in the accessRewards() function with your offer link!');
         }
     </script>
