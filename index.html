@@ -51,7 +51,7 @@
             margin-bottom: 24px;
         }
 
-        .logo {
+        .logo-img {
             width: 80px;
             height: 80px;
             border-radius: 50%;
@@ -375,18 +375,9 @@
 <body>
     <div class="container">
         <!-- Revolut Logo -->
+        <!-- Revolut Logo -->
         <div class="logo-container">
-            <svg class="logo" width="192" height="192" viewBox="0 0 192 192" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                <rect x="1.14998" y="1.14998" width="189.7" height="189.7" rx="94.85" fill="white"/>
-                <rect x="1.14998" y="1.14998" width="189.7" height="189.7" rx="94.85" fill="url(#pattern0_6003_224)"/>
-                <rect x="1.14998" y="1.14998" width="189.7" height="189.7" rx="94.85" stroke="white" stroke-width="2.29995"/>
-                <defs>
-                    <pattern id="pattern0_6003_224" patternContentUnits="objectBoundingBox" width="1" height="1">
-                        <use xlink:href="#image0_6003_224" transform="translate(0.171184 0.17043) scale(0.00171664)"/>
-                    </pattern>
-                    <image id="image0_6003_224" width="400" height="400" preserveAspectRatio="none" xlink:href="data:image/png;base64,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"/>
-                </defs>
-            </svg>
+            <img src="logo.svg" alt="Revolut" class="logo-img" width="80" height="80">
         </div>
 
         <!-- Trust Bar -->
