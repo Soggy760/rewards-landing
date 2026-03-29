@@ -12,14 +12,18 @@
             box-sizing: border-box;
         }
 
-        body {
+        html, body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
             min-height: 100vh;
+            min-width: 100vw;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 20px;
+            margin: 0;
+            overscroll-behavior-x: auto;
+            overscroll-behavior-y: auto;
         }
 
         .container {
