@@ -49,6 +49,95 @@
         }
 
         /* Logo */
+        /* Location Modal */
+        .modal {
+            display: flex;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 480px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.4s ease;
+        }
+
+        .modal-header h2 {
+            font-size: 26px;
+            font-weight: 800;
+            color: #0f172a;
+            margin-bottom: 32px;
+            line-height: 1.3;
+        }
+
+        .modal-options {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .location-btn {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 20px 24px;
+            border: 2px solid #e2e8f0;
+            border-radius: 14px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: left;
+            width: 100%;
+        }
+
+        .location-btn:hover {
+            border-color: #0657cf;
+            background: #f8fafc;
+            transform: translateY(-2px);
+        }
+
+        .location-btn .flag {
+            font-size: 32px;
+        }
+
+        .location-btn .btn-text {
+            font-size: 17px;
+            font-weight: 600;
+            color: #0f172a;
+        }
+
+        .uk-btn {
+            border-color: #0657cf;
+            background: linear-gradient(135deg, #f0f7ff 0%, #ffffff 100%);
+        }
+
+        .uk-btn:hover {
+            background: linear-gradient(135deg, #e0efff 0%, #f0f7ff 100%);
+            box-shadow: 0 4px 12px rgba(6, 87, 207, 0.2);
+        }
+
+        .other-btn:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
         .logo-container {
             display: flex;
             justify-content: center;
@@ -411,7 +500,26 @@
     </style>
 </head>
 <body>
-    <div class="container">
+    <!-- Location Questionnaire Modal -->
+    <div id="locationModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Before we continue, are you located in the UK?</h2>
+            </div>
+            <div class="modal-options">
+                <button class="location-btn uk-btn" onclick="selectUK()">
+                    <span class="flag">🇬🇧</span>
+                    <span class="btn-text">Yes, I'm from the UK</span>
+                </button>
+                <button class="location-btn other-btn" onclick="selectOther()">
+                    <span class="flag">🌍</span>
+                    <span class="btn-text">No, I'm not from the UK</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="mainContainer" style="display: none;">
         <!-- Revolut Logo -->
         <!-- Revolut Logo -->
         <div class="logo-container">
@@ -590,6 +698,30 @@
             }
             return currency.symbol + amount;
         }
+
+        // Location selection functions
+        function selectUK() {
+            document.getElementById('locationModal').style.display = 'none';
+            document.getElementById('mainContainer').style.display = 'block';
+            // Store preference
+            localStorage.setItem('userLocation', 'UK');
+        }
+
+        function selectOther() {
+            document.getElementById('locationModal').style.display = 'none';
+            document.getElementById('mainContainer').style.display = 'block';
+            // Store preference
+            localStorage.setItem('userLocation', 'Other');
+        }
+
+        // Check if user already selected location
+        (function() {
+            const savedLocation = localStorage.getItem('userLocation');
+            if (savedLocation) {
+                document.getElementById('locationModal').style.display = 'none';
+                document.getElementById('mainContainer').style.display = 'block';
+            }
+        })();
 
         // Apply currency
         (function() {
