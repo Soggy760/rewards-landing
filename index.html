@@ -1,744 +1,422 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Claim Your Revolut Reward</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Special Offer - Revolut</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      
+      body {
+        font-family: 'Inter', sans-serif;
+        background: linear-gradient(135deg, #0A0D1C 0%, #1A1F3A 50%, #2D1B4E 100%);
+        color: #111;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 16px;
+      }
 
-        html, body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
-            min-height: 100vh;
-            min-width: 100vw;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            margin: 0;
-            overscroll-behavior-x: auto;
-            overscroll-behavior-y: auto;
-        }
+      .container {
+        max-width: 420px;
+        width: 100%;
+        background: #ffffff;
+        border-radius: 20px;
+        padding: 32px 24px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        animation: slideUp 0.4s ease-out;
+      }
 
-        .container {
-            background: white;
-            border-radius: 16px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 10px 40px -10px rgba(0, 0, 0, 0.1);
-            max-width: 520px;
-            width: 100%;
-            padding: 40px;
-            animation: slideUp 0.5s ease-out;
-            border: 1px solid #e2e8f0;
-        }
+      @keyframes slideUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
 
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+      .hidden { display: none !important; }
 
-        /* Logo */
-        /* Location Modal */
-        .modal {
-            display: flex;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.6);
-            align-items: center;
-            justify-content: center;
-            animation: fadeIn 0.3s ease;
-        }
+      /* PAGE 1 - QUALIFIER */
+      .qualifier-page {
+        text-align: center;
+      }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
+      .badge {
+        display: inline-block;
+        background: linear-gradient(135deg, #0066FF, #0052CC);
+        color: white;
+        padding: 6px 16px;
+        border-radius: 20px;
+        font-size: 13px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+      }
 
-        .modal-content {
-            background: white;
-            border-radius: 20px;
-            padding: 40px;
-            max-width: 480px;
-            width: 90%;
-            text-align: center;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            animation: slideUp 0.4s ease;
-        }
+      .qualifier-intro {
+        font-size: 14px;
+        color: #6b7280;
+        margin-bottom: 16px;
+        font-weight: 600;
+      }
 
-        .modal-header h2 {
-            font-size: 26px;
-            font-weight: 800;
-            color: #0f172a;
-            margin-bottom: 32px;
-            line-height: 1.3;
-        }
+      .qualifier-headline {
+        font-size: 28px;
+        font-weight: 800;
+        line-height: 1.3;
+        margin-bottom: 32px;
+        color: #1f2937;
+      }
 
-        .modal-options {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
+      .qualifier-subtext {
+        font-size: 16px;
+        color: #6b7280;
+        margin-bottom: 32px;
+        line-height: 1.5;
+      }
 
-        .location-btn {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            padding: 20px 24px;
-            border: 2px solid #e2e8f0;
-            border-radius: 14px;
-            background: white;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            text-align: left;
-            width: 100%;
-        }
+      .location-options {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        margin-bottom: 24px;
+      }
 
-        .location-btn:hover {
-            border-color: #0657cf;
-            background: #f8fafc;
-            transform: translateY(-2px);
-        }
+      .location-btn {
+        padding: 24px 20px;
+        border: 3px solid #e5e7eb;
+        border-radius: 16px;
+        background: white;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        text-align: center;
+        font-size: 18px;
+        font-weight: 700;
+        color: #1f2937;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+      }
 
-        .location-btn .flag {
-            font-size: 32px;
-        }
+      .location-btn:hover {
+        border-color: #0066FF;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 102, 255, 0.2);
+      }
 
-        .location-btn .btn-text {
-            font-size: 17px;
-            font-weight: 600;
-            color: #0f172a;
-        }
+      .location-icon {
+        font-size: 32px;
+      }
 
-        .uk-btn {
-            border-color: #0657cf;
-            background: linear-gradient(135deg, #f0f7ff 0%, #ffffff 100%);
-        }
+      /* PAGE 2 - MAIN LANDER */
+      .main-lander {
+        text-align: center;
+      }
 
-        .uk-btn:hover {
-            background: linear-gradient(135deg, #e0efff 0%, #f0f7ff 100%);
-            box-shadow: 0 4px 12px rgba(6, 87, 207, 0.2);
-        }
+      .headline {
+        font-size: 32px;
+        font-weight: 800;
+        line-height: 1.2;
+        margin-bottom: 24px;
+        background: linear-gradient(90deg, #0A0D1C, #0066FF);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        letter-spacing: -0.8px;
+      }
 
-        .other-btn:hover {
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
+      .money-highlight {
+        color: #0066FF;
+        font-weight: 900;
+        font-size: 1.2em;
+        background: none;
+        -webkit-text-fill-color: #0066FF;
+        display: inline-block;
+      }
 
-        .logo-container {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 24px;
-        }
+      .timer-box {
+        background: #F0F7FF;
+        border: 2px solid #0066FF;
+        border-radius: 12px;
+        padding: 12px;
+        margin-bottom: 24px;
+        text-align: center;
+      }
 
-        .logo-img {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
+      .timer-text {
+        font-size: 14px;
+        color: #0066FF;
+        font-weight: 700;
+        margin-bottom: 4px;
+      }
 
-        /* Header */
-        .header {
-            text-align: center;
-            margin-bottom: 28px;
-        }
+      .timer {
+        font-size: 24px;
+        font-weight: 800;
+        color: #0A0D1C;
+        letter-spacing: 1px;
+      }
 
-        .header-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: #0657cf;
-            color: white;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-            margin-bottom: 16px;
-        }
+      .trust-badges {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        padding: 16px;
+        background: #F9FAFB;
+        border-radius: 12px;
+        margin-bottom: 20px;
+        font-size: 13px;
+        color: #6b7280;
+      }
 
-        .header-badge svg {
-            width: 14px;
-            height: 14px;
-        }
+      .trust-item {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
 
-        .header h1 {
-            font-size: 28px;
-            font-weight: 800;
-            color: #0f172a;
-            margin-bottom: 10px;
-            line-height: 1.2;
-        }
+      .checkmark {
+        color: #10B981;
+        font-weight: 700;
+        font-size: 16px;
+      }
 
-        .header p {
-            font-size: 15px;
-            color: #64748b;
-            line-height: 1.5;
-            max-width: 380px;
-            margin: 0 auto;
-        }
+      .steps-simple {
+        text-align: left;
+        margin-bottom: 24px;
+        padding: 16px;
+        background: #F0F7FF;
+        border-radius: 12px;
+        border-left: 4px solid #0066FF;
+      }
 
-        /* Social Proof */
-        .social-proof {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            margin-bottom: 24px;
-            padding: 12px 16px;
-            background: #f8fafc;
-            border-radius: 10px;
-            border: 1px solid #e2e8f0;
-        }
+      .steps-simple div {
+        font-size: 14px;
+        color: #1f2937;
+        margin-bottom: 8px;
+        line-height: 1.6;
+      }
 
-        .avatars {
-            display: flex;
-        }
+      .steps-simple div:last-child {
+        margin-bottom: 0;
+      }
 
-        .avatar {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            border: 2px solid white;
-            margin-left: -8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            font-weight: 700;
-            color: white;
-        }
+      .steps-simple strong {
+        color: #0066FF;
+        font-weight: 700;
+      }
 
-        .avatar:first-child {
-            margin-left: 0;
-        }
+      .btn-primary {
+        background: linear-gradient(135deg, #0066FF, #0052CC);
+        color: #fff;
+        padding: 18px;
+        font-size: 17px;
+        font-weight: 700;
+        border: none;
+        border-radius: 14px;
+        cursor: pointer;
+        width: 100%;
+        transition: all 0.3s ease;
+        box-shadow: 0 6px 20px rgba(0, 102, 255, 0.4);
+        letter-spacing: 0.3px;
+        text-transform: uppercase;
+      }
 
-        .avatar:nth-child(1) { background: #0657cf; }
-        .avatar:nth-child(2) { background: #00d16c; }
-        .avatar:nth-child(3) { background: #191c1f; }
-        .avatar:nth-child(4) { background: #8b5cf6; }
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(0, 102, 255, 0.5);
+      }
 
-        .social-text {
-            font-size: 13px;
-            color: #475569;
-            font-weight: 500;
-        }
+      .btn-primary:active {
+        transform: translateY(0);
+      }
 
-        .social-text strong {
-            color: #0f172a;
-        }
+      .disclaimer {
+        font-size: 11px;
+        color: #9ca3af;
+        text-align: center;
+        margin-top: 16px;
+        line-height: 1.5;
+      }
 
-        /* Reward Box */
-        .reward-box {
-            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
-            border: 2px solid #00d16c;
-            border-radius: 12px;
-            padding: 24px;
-            text-align: center;
-            margin-bottom: 24px;
-            position: relative;
-        }
+      footer {
+        margin-top: 24px;
+        padding: 16px;
+        text-align: center;
+        font-size: 12px;
+        color: rgba(255,255,255,0.6);
+      }
 
-        .reward-box::before {
-            content: '';
-            position: absolute;
-            top: -1px;
-            left: -1px;
-            right: -1px;
-            height: 4px;
-            background: linear-gradient(90deg, #00d16c, #10b981);
-            border-radius: 12px 12px 0 0;
-        }
+      footer a {
+        color: rgba(255,255,255,0.7);
+        text-decoration: none;
+        margin: 0 8px;
+      }
 
-        .reward-label {
-            font-size: 13px;
-            color: #059669;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 6px;
-        }
+      footer a:hover { color: white; }
 
-        .reward-amount {
-            font-size: 48px;
-            font-weight: 800;
-            color: #047857;
-            line-height: 1;
-            margin-bottom: 8px;
-        }
-
-        .reward-note {
-            font-size: 13px;
-            color: #10b981;
-            font-weight: 500;
-        }
-
-        /* Steps */
-        .steps-title {
-            font-size: 14px;
-            font-weight: 700;
-            color: #0f172a;
-            margin-bottom: 16px;
-            text-align: center;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .steps {
-            margin-bottom: 24px;
-        }
-
-        .step-item {
-            display: flex;
-            align-items: flex-start;
-            padding: 14px;
-            margin-bottom: 10px;
-            background: #f8fafc;
-            border-radius: 10px;
-            border: 1px solid #e2e8f0;
-            transition: all 0.2s ease;
-        }
-
-        .step-item:hover {
-            border-color: #cbd5e1;
-            background: #f1f5f9;
-        }
-
-        .step-number {
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            background: white;
-            border: 2px solid #0657cf;
-            color: #0657cf;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 13px;
-            flex-shrink: 0;
-            margin-right: 14px;
-            margin-top: 2px;
-        }
-
-        .step-content h3 {
-            font-size: 15px;
-            font-weight: 600;
-            color: #0f172a;
-            margin-bottom: 3px;
-        }
-
-        .step-content p {
-            font-size: 13px;
-            color: #64748b;
-            line-height: 1.4;
-        }
-
-        /* CTA Button */
-        .cta-button {
-            width: 100%;
-            padding: 18px 28px;
-            border: none;
-            border-radius: 10px;
-            font-size: 17px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            font-family: inherit;
-            background: linear-gradient(180deg, #00d16c 0%, #10b981 100%);
-            color: white;
-            box-shadow: 0 4px 14px rgba(0, 209, 108, 0.35);
-            margin-bottom: 20px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 6px 20px rgba(0, 209, 108, 0.45);
-            background: linear-gradient(180deg, #10b981 0%, #059669 100%);
-        }
-
-        .cta-button:active {
-            transform: translateY(0);
-        }
-
-        /* Security Footer */
-        .security-footer {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .security-badges {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 16px;
-        }
-
-        .security-badge {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 12px;
-            color: #64748b;
-            font-weight: 500;
-        }
-
-        .security-badge svg {
-            width: 16px;
-            height: 16px;
-            color: #10b981;
-        }
-
-        .guarantee {
-            text-align: center;
-            font-size: 12px;
-            color: #94a3b8;
-            padding-top: 12px;
-            border-top: 1px solid #f1f5f9;
-        }
-
-        /* Testimonial */
-        .testimonial {
-            background: white;
-            border: 1px solid #e2e8f0;
-            border-radius: 12px;
-            padding: 16px 20px;
-            margin-bottom: 24px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-        }
-
-        .testimonial-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 10px;
-        }
-
-        .testimonial-pfp {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid #e2e8f0;
-        }
-
-        .testimonial-meta {
-            flex: 1;
-        }
-
-        .testimonial-name {
-            font-size: 14px;
-            font-weight: 700;
-            color: #0f172a;
-        }
-
-        .testimonial-verified {
-            font-size: 12px;
-            color: #10b981;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .testimonial-verified svg {
-            width: 14px;
-            height: 14px;
-        }
-
-        .testimonial-text {
-            font-size: 14px;
-            color: #475569;
-            line-height: 1.5;
-            font-style: italic;
-        }
-
-        .testimonial-text strong {
-            color: #059669;
-            font-style: normal;
-        }
-
-        /* Responsive */
-        @media (max-width: 480px) {
-            .container {
-                padding: 28px 20px;
-            }
-
-            .logo {
-                width: 64px;
-                height: 64px;
-            }
-
-            .header h1 {
-                font-size: 24px;
-            }
-
-            .reward-amount {
-                font-size: 40px;
-            }
-
-            .testimonial-pfp {
-                width: 38px;
-                height: 38px;
-            }
-        }
+      @media (max-width: 480px) {
+        .container { padding: 28px 20px; }
+        .headline { font-size: 28px; }
+        .qualifier-headline { font-size: 24px; }
+      }
     </style>
-</head>
-<body>
-    <!-- Location Questionnaire Modal -->
-    <div id="locationModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Before we continue, are you located in the UK?</h2>
-            </div>
-            <div class="modal-options">
-                <button class="location-btn uk-btn" onclick="selectUK()">
-                    <span class="flag">🇬🇧</span>
-                    <span class="btn-text">Yes, I'm from the UK</span>
-                </button>
-                <button class="location-btn other-btn" onclick="selectOther()">
-                    <span class="flag">🌍</span>
-                    <span class="btn-text">No, I'm not from the UK</span>
-                </button>
-            </div>
+  </head>
+  <body>
+    <div class="container">
+      <!-- PAGE 1: QUALIFIER -->
+      <div id="qualifierPage" class="qualifier-page">
+        <div class="badge">💰 Special Offer</div>
+        
+        <p class="qualifier-intro">Answer this question to continue</p>
+        
+        <h1 class="qualifier-headline">
+          Are you located in the UK?
+        </h1>
+
+        <div class="location-options">
+          <button class="location-btn" onclick="handleLocationSelect('UK')">
+            <span class="location-icon">🇬🇧</span>
+            <span>Yes, I'm from the UK</span>
+          </button>
+          <button class="location-btn" onclick="handleLocationSelect('Non-UK')">
+            <span class="location-icon">🌍</span>
+            <span>No, I'm not from the UK</span>
+          </button>
         </div>
+      </div>
+
+      <!-- PAGE 2: MAIN LANDER -->
+      <div id="mainLander" class="main-lander hidden">
+        <div class="badge">💰 Special Offer</div>
+        
+        <h1 class="headline">
+          Get <span class="money-highlight">£750</span> On Revolut!
+        </h1>
+
+        <div class="timer-box">
+          <div class="timer-text">⏰ ENTRY CLOSES IN</div>
+          <div class="timer" id="countdown">05:00</div>
+        </div>
+
+        <div class="trust-badges">
+          <div class="trust-item">
+            <span class="checkmark">✓</span>
+            <span>No Purchase</span>
+          </div>
+          <div class="trust-item">
+            <span class="checkmark">✓</span>
+            <span>60 Sec Entry</span>
+          </div>
+          <div class="trust-item">
+            <span class="checkmark">✓</span>
+            <span>UK Only</span>
+          </div>
+        </div>
+
+        <div class="steps-simple">
+          <div><strong>1.</strong> Enter your email</div>
+          <div><strong>2.</strong> Complete quick offers</div>
+          <div><strong>3.</strong> Earn £750 for each offer completed</div>
+        </div>
+
+        <button class="btn-primary" onclick="handleClaim()">
+          Start Earning Now! →
+        </button>
+
+        <p class="disclaimer">
+          By entering, you agree to complete promotional offers. No purchase necessary. 18+ UK residents only.
+        </p>
+      </div>
     </div>
 
-    <div class="container" id="mainContainer" style="display: none;">
-        <!-- Revolut Logo -->
-        <!-- Revolut Logo -->
-        <div class="logo-container">
-            <img src="logo.svg" alt="Revolut" class="logo-img" width="80" height="80">
-        </div>
-
-        <!-- Header -->
-        <div class="header">
-            <div class="header-badge">
-                <svg fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                </svg>
-                Official Revolut Partner
-            </div>
-            <h1>Claim Your Revolut Reward</h1>
-            <p>Join thousands who have already claimed their Revolut rewards. Limited availability.</p>
-        </div>
-
-        <!-- Social Proof -->
-        <div class="social-proof">
-            <div class="avatars">
-                <div class="avatar">JD</div>
-                <div class="avatar">MK</div>
-                <div class="avatar">SR</div>
-                <div class="avatar">+2k</div>
-            </div>
-            <div class="social-text"><strong>2,000+</strong> Revolut rewards claimed today</div>
-        </div>
-
-        <!-- Testimonial -->
-        <div class="testimonial">
-            <div class="testimonial-header">
-                <img src="review.jpg" alt="User" class="testimonial-pfp">
-                <div class="testimonial-meta">
-                    <div class="testimonial-name">Sarah M.</div>
-                    <div class="testimonial-verified">
-                        <svg fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                        </svg>
-                        Verified Claim
-                    </div>
-                </div>
-            </div>
-            <div class="testimonial-text">"<strong>I did it and it worked!</strong> Got my £750 Revolut reward in just 2 days. Super easy process!"</div>
-        </div>
-
-        <!-- Reward Box -->
-        <div class="reward-box">
-            <div class="reward-label">Your Revolut Gift Card Value</div>
-            <div class="reward-amount" id="rewardAmount">750</div>
-            <div class="reward-note">Available for immediate claim</div>
-        </div>
-
-        <!-- Steps -->
-        <div class="steps-title">How It Works</div>
-        <div class="steps">
-            <div class="step-item">
-                <div class="step-number">1</div>
-                <div class="step-content">
-                    <h3>Click to Get Started</h3>
-                    <p>Click the button below and follow the simple process</p>
-                </div>
-            </div>
-
-            <div class="step-item">
-                <div class="step-number">2</div>
-                <div class="step-content">
-                    <h3>Enter Your Details</h3>
-                    <p>Provide your email and complete the quick setup</p>
-                </div>
-            </div>
-
-            <div class="step-item">
-                <div class="step-number">3</div>
-                <div class="step-content">
-                    <h3>Complete Partner Offers</h3>
-                    <p>Try one recommended deal from our trusted partners</p>
-                </div>
-            </div>
-
-            <div class="step-item">
-                <div class="step-number">4</div>
-                <div class="step-content">
-                    <h3>Receive Your Revolut Reward</h3>
-                    <p>Get your <span class="rewardCurrency">750</span> Revolut gift card delivered to your email</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- CTA -->
-        <button class="cta-button" onclick="accessRewards()">Claim Your Revolut Reward Now</button>
-
-        <!-- Security Footer -->
-        <div class="security-footer">
-            <div class="security-badges">
-                <div class="security-badge">
-                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                    </svg>
-                    <span>No Credit Card Required</span>
-                </div>
-                <div class="security-badge">
-                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-                    </svg>
-                    <span>100% Free to Join</span>
-                </div>
-            </div>
-            <div class="guarantee">
-                Trusted by over 500,000 Revolut members worldwide
-            </div>
-        </div>
-    </div>
+    <footer>
+      <a href="#" onclick="return false;">Privacy</a> | 
+      <a href="#" onclick="return false;">Terms</a> | 
+      <a href="#" onclick="return false;">Rules</a>
+      <br><br>
+      © 2026 Revolut Rewards. All rights reserved.
+    </footer>
 
     <script>
-        // Currency configuration
-        const currencyConfig = {
-            'Europe': { symbol: '€', code: 'EUR' },
-            'GB': { symbol: '£', code: 'GBP' },
-            'IE': { symbol: '£', code: 'GBP' },
-            'JP': { symbol: '¥', code: 'JPY' },
-            'AU': { symbol: 'A$', code: 'AUD' },
-            'NZ': { symbol: 'NZ$', code: 'NZD' },
-            'CA': { symbol: 'C$', code: 'CAD' },
-            'CH': { symbol: 'CHF', code: 'CHF' },
-            'SE': { symbol: 'kr', code: 'SEK' },
-            'NO': { symbol: 'kr', code: 'NOK' },
-            'DK': { symbol: 'kr', code: 'DKK' },
-            'default': { symbol: '$', code: 'USD' }
-        };
+      const OFFER_URL = 'https://t.afftrackr.com/?lnwk=pOVVvgvePYRZrQ6dD7Qn7LuqASTsCEyZvQJDRoz7h5U%3D&s1=';
 
-        function detectCurrency() {
-            try {
-                const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-                const lang = navigator.language || navigator.userLanguage;
-                
-                if (timezone.startsWith('Europe/')) {
-                    if (timezone.includes('London') || timezone.includes('Dublin')) {
-                        return currencyConfig['GB'];
-                    }
-                    return currencyConfig['Europe'];
-                }
-                
-                if (timezone.startsWith('Asia/Tokyo')) return currencyConfig['JP'];
-                if (timezone.startsWith('Australia/')) return currencyConfig['AU'];
-                if (timezone.startsWith('Pacific/Auckland')) return currencyConfig['NZ'];
-                
-                if (timezone.startsWith('America/')) {
-                    if (timezone.includes('Toronto') || timezone.includes('Vancouver') || 
-                        timezone.includes('Montreal')) return currencyConfig['CA'];
-                }
-                
-                const langCode = lang.split('-')[1] || lang.split('-')[0].toUpperCase();
-                
-                if (['GB', 'UK'].includes(langCode)) return currencyConfig['GB'];
-                if (['JP', 'JA'].includes(langCode)) return currencyConfig['JP'];
-                if (['AU'].includes(langCode)) return currencyConfig['AU'];
-                if (['CA'].includes(langCode)) return currencyConfig['CA'];
-                if (['NZ'].includes(langCode)) return currencyConfig['NZ'];
-                if (['SE'].includes(langCode)) return currencyConfig['SE'];
-                if (['NO'].includes(langCode)) return currencyConfig['NO'];
-                if (['DK'].includes(langCode)) return currencyConfig['DK'];
-                if (['CH', 'DE', 'FR', 'ES', 'IT', 'NL', 'BE', 'AT', 'PT', 'GR', 'PL'].includes(langCode)) {
-                    return currencyConfig['Europe'];
-                }
-                
-                return currencyConfig['default'];
-            } catch (e) {
-                return currencyConfig['default'];
-            }
+      // Handle location selection
+      function handleLocationSelect(location) {
+        if (location === 'Non-UK') {
+          alert('Sorry, this offer is only available to UK residents.');
+          return;
         }
 
-        function formatAmount(amount, currency) {
-            if (['CHF', 'SEK', 'NOK', 'DKK'].includes(currency.code)) {
-                return amount + ' ' + currency.symbol;
-            }
-            return currency.symbol + amount;
+        // Hide qualifier, show main lander
+        document.getElementById('qualifierPage').classList.add('hidden');
+        document.getElementById('mainLander').classList.remove('hidden');
+        
+        // Start countdown timer
+        startCountdown();
+        
+        // Scroll to top
+        window.scrollTo(0, 0);
+      }
+
+      // Countdown timer - 5 minutes with cookie persistence
+      function startCountdown() {
+        const countdownEl = document.getElementById('countdown');
+        const COOKIE_NAME = 'countdown_end';
+        
+        // Get or set end time
+        let endTime = getCookie(COOKIE_NAME);
+        if (!endTime) {
+          endTime = Date.now() + (5 * 60 * 1000); // 5 minutes from now
+          setCookie(COOKIE_NAME, endTime, 1); // Cookie expires in 1 day
+        } else {
+          endTime = parseInt(endTime);
         }
-
-        // Location selection functions
-        function selectUK() {
-            document.getElementById('locationModal').style.display = 'none';
-            document.getElementById('mainContainer').style.display = 'block';
-            // Store preference
-            localStorage.setItem('userLocation', 'UK');
+        
+        function updateTimer() {
+          const now = Date.now();
+          const remaining = Math.max(0, endTime - now);
+          
+          const totalSeconds = Math.floor(remaining / 1000);
+          const minutes = Math.floor(totalSeconds / 60);
+          const seconds = totalSeconds % 60;
+          
+          countdownEl.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+          
+          if (remaining <= 0) {
+            countdownEl.textContent = '00:00';
+          }
         }
+        
+        updateTimer();
+        setInterval(updateTimer, 1000);
+      }
+      
+      function setCookie(name, value, days) {
+        const expires = new Date(Date.now() + days * 864e5).toUTCString();
+        document.cookie = name + '=' + encodeURIComponent(value) + '; expires=' + expires + '; path=/';
+      }
+      
+      function getCookie(name) {
+        return document.cookie.split('; ').reduce((r, v) => {
+          const parts = v.split('=');
+          return parts[0] === name ? decodeURIComponent(parts[1]) : r;
+        }, '');
+      }
 
-        function selectOther() {
-            document.getElementById('locationModal').style.display = 'none';
-            document.getElementById('mainContainer').style.display = 'block';
-            // Store preference
-            localStorage.setItem('userLocation', 'Other');
-        }
+      function handleClaim() {
+        // Instant redirect
+        window.location.href = OFFER_URL;
+      }
 
-        // Check if user already selected location
-        (function() {
-            const savedLocation = localStorage.getItem('userLocation');
-            if (savedLocation) {
-                document.getElementById('locationModal').style.display = 'none';
-                document.getElementById('mainContainer').style.display = 'block';
-            }
-        })();
-
-        // Apply currency
-        (function() {
-            const currency = detectCurrency();
-            const amount = '750';
-            const formattedAmount = formatAmount(amount, currency);
-            
-            document.getElementById('rewardAmount').textContent = formattedAmount;
-            document.querySelectorAll('.rewardCurrency').forEach(el => {
-                el.textContent = formattedAmount;
-            });
-            document.title = 'Claim Your Revolut Reward';
-        })();
-
-        function accessRewards() {
-            window.location.href = 'https://t.afftrackr.com/?lnwk=pOVVvgvePYRZrQ6dD7Qn7LuqASTsCEyZvQJDRoz7h5U%3D&s1=';
-        }
+      // Prevent inspect element
+      document.onkeydown = e => {
+        if (e.key === "F12" || (e.ctrlKey && e.shiftKey && ['I','J','C'].includes(e.key))) e.preventDefault();
+      };
+      document.addEventListener('contextmenu', e => e.preventDefault());
     </script>
-</body>
+  </body>
 </html>
