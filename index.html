@@ -294,7 +294,7 @@
         <div class="badge">💰 Special Offer</div>
         
         <h1 class="headline">
-          Get <span class="money-highlight">£750</span> On Revolut!
+          Claim Your <span class="money-highlight">£750</span> Reward
         </h1>
 
         <div class="timer-box">
@@ -318,9 +318,9 @@
         </div>
 
         <div class="steps-simple">
-          <div><strong>1.</strong> Enter your email</div>
-          <div><strong>2.</strong> Complete quick offers</div>
-          <div><strong>3.</strong> Earn £750 for each offer completed</div>
+          <div><strong>1.</strong> Register with your email</div>
+          <div><strong>2.</strong> Complete partner offers</div>
+          <div><strong>3.</strong> Receive your reward</div>
         </div>
 
         <button class="btn-primary" onclick="handleClaim()">
@@ -328,7 +328,7 @@
         </button>
 
         <p class="disclaimer">
-          By entering, you agree to complete promotional offers. No purchase necessary. 18+ UK residents only.
+          By participating, you agree to complete partner offers to qualify for rewards. No purchase required. 18+ UK residents only. Terms apply.
         </p>
       </div>
     </div>
@@ -412,11 +412,7 @@
         window.location.href = OFFER_URL;
       }
 
-      // Prevent inspect element
-      document.onkeydown = e => {
-        if (e.key === "F12" || (e.ctrlKey && e.shiftKey && ['I','J','C'].includes(e.key))) e.preventDefault();
-      };
-      document.addEventListener('contextmenu', e => e.preventDefault());
+
     </script>
   </body>
 </html>
