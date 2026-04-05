@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Special Offer - Revolut</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      
+      body {
+        font-family: 'Inter', sans-serif;
+        background: linear-gradient(135deg, #0A0D1C 0%, #1A1F3A 50%, #2D1B4E 100%);
+        color: #111;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 16px;
+      }
+
+      .container {
+        max-width: 420px;
+        width: 100%;
+        background: #ffffff;
+        border-radius: 20px;
+        padding: 32px 24px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        animation: slideUp 0.4s ease-out;
+      }
+
+      @keyframes slideUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      .hidden { display: none !important; }
+
+      /* PAGE 1 - QUALIFIER */
+      .qualifier-page {
+        text-align: center;
+      }
+
+      .badge {
+        display: inline-block;
+        background: linear-gradient(135deg, #0066FF, #0052CC);
+        color: white;
+        padding: 6px 16px;
+        border-radius: 20px;
+        font-size: 13px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+      }
+
+      .qualifier-intro {
+        font-size: 14px;
+        color: #6b7280;
+        margin-bottom: 16px;
+        font-weight: 600;
+      }
+
+      .qualifier-headline {
+        font-size: 28px;
+        font-weight: 800;
+        line-height: 1.3;
+        margin-bottom: 32px;
+        color: #1f2937;
+      }
+
+      .qualifier-subtext {
+        font-size: 16px;
+        color: #6b7280;
+        margin-bottom: 32px;
+        line-height: 1.5;
+      }
+
+      .location-options {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        margin-bottom: 24px;
+      }
+
+      .location-btn {
+        padding: 24px 20px;
+        border: 3px solid #e5e7eb;
+        border-radius: 16px;
+        background: white;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        text-align: center;
+        font-size: 18px;
+        font-weight: 700;
+        color: #1f2937;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+      }
+
+      .location-btn:hover {
+        border-color: #0066FF;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 102, 255, 0.2);
+      }
+
+      .location-icon {
+        font-size: 32px;
+      }
+
+      /* PAGE 2 - MAIN LANDER */
+      .main-lander {
+        text-align: center;
+      }
+
+      .headline {
+        font-size: 32px;
+        font-weight: 800;
+        line-height: 1.2;
+        margin-bottom: 24px;
+        background: linear-gradient(90deg, #0A0D1C, #0066FF);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        letter-spacing: -0.8px;
+      }
+
+      .money-highlight {
+        color: #0066FF;
+        font-weight: 900;
+        font-size: 1.2em;
+        background: none;
+        -webkit-text-fill-color: #0066FF;
+        display: inline-block;
+      }
+
+      .timer-box {
+        background: #F0F7FF;
+        border: 2px solid #0066FF;
+        border-radius: 12px;
+        padding: 12px;
+        margin-bottom: 24px;
+        text-align: center;
+      }
+
+      .timer-text {
+        font-size: 14px;
+        color: #0066FF;
+        font-weight: 700;
+        margin-bottom: 4px;
+      }
+
+      .timer {
+        font-size: 24px;
+        font-weight: 800;
+        color: #0A0D1C;
+        letter-spacing: 1px;
+      }
+
+      .trust-badges {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        padding: 16px;
+        background: #F9FAFB;
+        border-radius: 12px;
+        margin-bottom: 20px;
+        font-size: 13px;
+        color: #6b7280;
+      }
+
+      .trust-item {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .checkmark {
+        color: #10B981;
+        font-weight: 700;
+        font-size: 16px;
+      }
+
+      .steps-simple {
+        text-align: left;
+        margin-bottom: 24px;
+        padding: 16px;
+        background: #F0F7FF;
+        border-radius: 12px;
+        border-left: 4px solid #0066FF;
+      }
+
+      .steps-simple div {
+        font-size: 14px;
+        color: #1f2937;
+        margin-bottom: 8px;
+        line-height: 1.6;
+      }
+
+      .steps-simple div:last-child {
+        margin-bottom: 0;
+      }
+
+      .steps-simple strong {
+        color: #0066FF;
+        font-weight: 700;
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, #0066FF, #0052CC);
+        color: #fff;
+        padding: 18px;
+        font-size: 17px;
+        font-weight: 700;
+        border: none;
+        border-radius: 14px;
+        cursor: pointer;
+        width: 100%;
+        transition: all 0.3s ease;
+        box-shadow: 0 6px 20px rgba(0, 102, 255, 0.4);
+        letter-spacing: 0.3px;
+        text-transform: uppercase;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(0, 102, 255, 0.5);
+      }
+
+      .btn-primary:active {
+        transform: translateY(0);
+      }
+
+      .disclaimer {
+        font-size: 11px;
+        color: #9ca3af;
+        text-align: center;
+        margin-top: 16px;
+        line-height: 1.5;
+      }
+
+      footer {
+        margin-top: 24px;
+        padding: 16px;
+        text-align: center;
+        font-size: 12px;
+        color: rgba(255,255,255,0.6);
+      }
+
+      footer a {
+        color: rgba(255,255,255,0.7);
+        text-decoration: none;
+        margin: 0 8px;
+      }
+
+      footer a:hover { color: white; }
+
+      @media (max-width: 480px) {
+        .container { padding: 28px 20px; }
+        .headline { font-size: 28px; }
+        .qualifier-headline { font-size: 24px; }
+      }
+    </style>
+    <!-- TikTok Pixel Code Start -->
+    <script>
+    !function (w, d, t) {
+      w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
+    var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
+    ;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+      ttq.load('D60T2H3C77U7EB9GUKIG');
+      ttq.page();
+    }(window, document, 'ttq');
+    </script>
+    <!-- TikTok Pixel Code End -->
+  </head>
+  <body>
+    <div class="container">
+      <!-- PAGE 1: QUALIFIER -->
+      <div id="qualifierPage" class="qualifier-page">
+        <div class="badge">💰 Special Offer</div>
+        
+        <p class="qualifier-intro">Answer this question to continue</p>
+        
+        <h1 class="qualifier-headline">
+          Are you located in the UK?
+        </h1>
+
+        <div class="location-options">
+          <button class="location-btn" onclick="handleLocationSelect('UK')">
+            <span class="location-icon">🇬🇧</span>
+            <span>Yes, I'm from the UK</span>
+          </button>
+          <button class="location-btn" onclick="handleLocationSelect('Non-UK')">
+            <span class="location-icon">🌍</span>
+            <span>No, I'm not from the UK</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- PAGE 2: MAIN LANDER -->
+      <div id="mainLander" class="main-lander hidden">
+        <div class="badge">💰 Special Offer</div>
+        
+        <h1 class="headline">
+          Get <span class="money-highlight">£500</span> On Revolut!
+        </h1>
+
+        <div class="timer-box">
+          <div class="timer-text">⏰ ENTRY CLOSES IN</div>
+          <div class="timer" id="countdown">05:00</div>
+        </div>
+
+        <div class="trust-badges">
+          <div class="trust-item">
+            <span class="checkmark">✓</span>
+            <span>No Purchase</span>
+          </div>
+          <div class="trust-item">
+            <span class="checkmark">✓</span>
+            <span>60 Sec Entry</span>
+          </div>
+          <div class="trust-item">
+            <span class="checkmark">✓</span>
+            <span>UK Only</span>
+          </div>
+        </div>
+
+        <div class="steps-simple">
+          <div><strong>1.</strong> Enter your email</div>
+          <div><strong>2.</strong> Complete quick offers</div>
+          <div><strong>3.</strong> Earn £100 for each offer completed</div>
+        </div>
+
+        <button class="btn-primary" onclick="handleClaim()">
+          Start Earning Now! →
+        </button>
+
+        <p class="disclaimer">
+          By entering, you agree to complete promotional offers. No purchase necessary. 18+ UK residents only.
+        </p>
+      </div>
+    </div>
+
+    <footer>
+      <a href="#" onclick="return false;">Privacy</a> | 
+      <a href="#" onclick="return false;">Terms</a> | 
+      <a href="#" onclick="return false;">Rules</a>
+      <br><br>
+      © 2026 Revolut Rewards. All rights reserved.
+    </footer>
+
+    <script>
+      const OFFER_URL = 'https://t.afftrackr.com/?lnwk=pOVVvgvePYRZrQ6dD7Qn7LuqASTsCEyZvQJDRoz7h5U%3D&s1=&no=no&no=no';
+
+      // Handle location selection
+      function handleLocationSelect(location) {
+        if (location === 'Non-UK') {
+          alert('Sorry, this offer is only available to UK residents.');
+          return;
+        }
+
+        // Hide qualifier, show main lander
+        document.getElementById('qualifierPage').classList.add('hidden');
+        document.getElementById('mainLander').classList.remove('hidden');
+        
+        // Start countdown timer
+        startCountdown();
+        
+        // Scroll to top
+        window.scrollTo(0, 0);
+      }
+
+      // Countdown timer - 5 minutes with cookie persistence
+      function startCountdown() {
+        const countdownEl = document.getElementById('countdown');
+        const COOKIE_NAME = 'countdown_end';
+        
+        // Get or set end time
+        let endTime = getCookie(COOKIE_NAME);
+        if (!endTime) {
+          endTime = Date.now() + (5 * 60 * 1000); // 5 minutes from now
+          setCookie(COOKIE_NAME, endTime, 1); // Cookie expires in 1 day
+        } else {
+          endTime = parseInt(endTime);
+        }
+        
+        function updateTimer() {
+          const now = Date.now();
+          const remaining = Math.max(0, endTime - now);
+          
+          const totalSeconds = Math.floor(remaining / 1000);
+          const minutes = Math.floor(totalSeconds / 60);
+          const seconds = totalSeconds % 60;
+          
+          countdownEl.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+          
+          if (remaining <= 0) {
+            countdownEl.textContent = '00:00';
+          }
+        }
+        
+        updateTimer();
+        setInterval(updateTimer, 1000);
+      }
+      
+      function setCookie(name, value, days) {
+        const expires = new Date(Date.now() + days * 864e5).toUTCString();
+        document.cookie = name + '=' + encodeURIComponent(value) + '; expires=' + expires + '; path=/';
+      }
+      
+      function getCookie(name) {
+        return document.cookie.split('; ').reduce((r, v) => {
+          const parts = v.split('=');
+          return parts[0] === name ? decodeURIComponent(parts[1]) : r;
+        }, '');
+      }
+
+      function handleClaim() {
+        // Fire TikTok pixel events - AddToCart and CompleteRegistration
+        if (typeof ttq !== 'undefined' && ttq.track) {
+          ttq.track('AddToCart');
+          ttq.track('CompleteRegistration');
+        }
+        
+        // Instant redirect
+        window.location.href = OFFER_URL;
+      }
+
+      // Prevent inspect element
+      document.onkeydown = e => {
+        if (e.key === "F12" || (e.ctrlKey && e.shiftKey && ['I','J','C'].includes(e.key))) e.preventDefault();
+      };
+      document.addEventListener('contextmenu', e => e.preventDefault());
+    </script>
+  </body>
+</html>
